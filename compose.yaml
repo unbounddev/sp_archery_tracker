@@ -1,0 +1,38 @@
+services:
+  odoo:
+    image: odoo:19.0
+    ports:
+      - 8070:8069
+    depends_on:
+      db:
+        condition: service_healthy
+        restart: true
+    networks:
+      - backend
+    restart: always
+    volumes:
+      - odoo-data:/var/lib/odoo
+      - .:/mnt/extra-addons
+  db:
+    image: postgres:18-alpine
+    volumes:
+      - postgres-data:/var/lib/postgresql
+    networks:
+      - backend
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: odoo
+      POSTGRES_USER: odoo
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+    restart: always
+networks:
+  backend:
+volumes:
+  postgres-data:
+  odoo-data:
+  
