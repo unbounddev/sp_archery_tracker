@@ -1,7 +1,7 @@
 {
     "name": "Archery Tracker",
     "version": "1.0",
-    "depends": ["base"],
+    "depends": ["base_setup"],
     "installable": True,
     "application": True,
     "data": [
@@ -18,6 +18,9 @@
             ("include", "web._assets_bootstrap"),
             ("include", "web._assets_core"),
             "sp_archery_tracker/static/src/archery_tracker/**/*",
+        ],
+        "web.assets_backend": [
+            "sp_archery_tracker/static/src/ends/**/*"
         ]
     }
 }
