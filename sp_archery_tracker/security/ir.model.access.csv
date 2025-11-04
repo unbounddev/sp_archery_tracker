@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_create,perm_read,perm_write,perm_unlink
+access_sp_archery_tracker_log,sp.archery.tracker.log,model_sp_archery_tracker_log,group_coach,1,1,1,1
+access_sp_archery_tracker_log_archer,sp.archery.tracker.log.archer,model_sp_archery_tracker_log,group_archer,1,1,1,1

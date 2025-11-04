@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <menuitem id="sp_archery_tracker_menu_root" groups="group_coach,group_archer" name="Archery Tracker">
+    <menuitem id="sp_archery_tracker_log_menu" name="Logs" action="sp_archery_tracker_log_action" />
+  </menuitem>
+</odoo>

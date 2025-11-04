@@ -5,7 +5,10 @@
     "installable": True,
     "application": True,
     "data": [
-        "views/sp_archery_tracker_views.xml"
+        "security/sp_archery_tracker_security.xml",
+        "security/ir.model.access.csv",
+        "views/sp_archery_tracker_views.xml",
+        "views/sp_archery_tracker_menus.xml",
     ],
     "assets": {
         "sp_archery_tracker.assets_archery_tracker": [
