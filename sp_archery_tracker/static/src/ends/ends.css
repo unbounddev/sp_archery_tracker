@@ -1,0 +1,29 @@
+.o_field_ends {
+  width: 100%;
+}
+
+.o_field_ends > .ends {
+  width: 100%;
+  padding-left: 0;
+}
+
+.end {
+  list-style: none;
+}
+
+.end_title {
+  font-weight: 500;
+}
+
+.end_distance {
+  margin-left: 8px;
+}
+
+.end_arrows {
+  list-style: none;
+  padding-left: 0;
+}
+
+.arrow {
+  list-style: none;
+}

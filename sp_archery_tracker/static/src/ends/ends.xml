@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates xml:space="preserve">
   <t t-name="sp_archery_tracker.Ends">
-    <ul>
-      
+    <ul class="ends" t-if="value.ends">
+      <li class="end" t-foreach="value.ends" t-as="end" t-key="end_index">
+        <div class="end_header">
+          <span class="end_title">End <t t-esc="end_index+1" /></span>
+          <span class="end_distance"><t t-esc="end.distance" /><t t-esc="end.unit" /></span>
+        </div>
+        <ul class="end_arrows">
+          <li class="arrow" t-foreach="end.arrows" t-as="arrow" t-key="arrow_index"></li>
+          <li class="add_arrow_btn"><i class="fa fa-plus"></i></li>
+        </ul>
+      </li>
     </ul>
+    <button id="add_end_btn" t-on-click="addEnd">Add End</button>
   </t>
 </templates>

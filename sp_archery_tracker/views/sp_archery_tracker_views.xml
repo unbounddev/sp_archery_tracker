@@ -44,8 +44,10 @@
             <field name="date" />
             <field name="score" />
           </group>
-        <field name="ends" widget="ends" /> 
-      </sheet>
+        </sheet>
+        <sheet>
+          <field name="ends" widget="ends" /> 
+        </sheet>
       </form>
     </field>
   </record>
