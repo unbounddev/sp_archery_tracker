@@ -9,6 +9,15 @@
 
 .end {
   list-style: none;
+  border: solid 4px hsl(210, 17%, 93%);
+  border-radius: 10px;
+}
+
+.end_header {
+  background-color: hsl(210, 17%, 95%);
+  padding: 8px;
+  border-radius: 4px 4px 0 0;
+  font-size: 16px;
 }
 
 .end_title {
@@ -22,8 +31,103 @@
 .end_arrows {
   list-style: none;
   padding-left: 0;
+  padding: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .arrow {
   list-style: none;
+  width: 48px;
+  height: 48px;
+  background-color: hsl(210, 17%, 95%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.add_arrow_btn {
+  height: 48px;
+  width: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  background-color: hsl(210, 17%, 95%);
+}
+
+.add_arrow_btn > i {
+  font-size: 20px;
+}
+
+#add_end_btn {
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: hsl(210, 17%, 95%);
+}
+
+.edit_arrow_dialog_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.edit_arrow_dialog {
+  background-color: white;
+  padding: 24px;
+  border: none;
+  border-radius: 16px;
+  width: 50%;
+  max-width: 500px;
+}
+
+.edit_arrow_dialog_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.edit_arrow_dialog_header > .close_btn {
+  border: none;
+  background-color: transparent;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 48px; */
+  /* width: 48px; */
+}
+
+.edit_arrow_dialog_content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  place-items: center;
+}
+
+.arrow_value {
+  width: 100%;
+  aspect-ratio: 2;
+  /* height: 48px; */
+  background-color: hsl(210, 17%, 95%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 18px;
 }
