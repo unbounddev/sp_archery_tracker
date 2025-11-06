@@ -22,7 +22,7 @@
       <div class="edit_arrow_dialog_header"><h1>Edit Arrow</h1><button class="close_btn" t-on-click="closeArrowDialog">X</button></div>
       <div class="edit_arrow_dialog_content">
         <t t-set="arrowValues" t-value="['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'X']" />
-        <button class="arrow_value" t-foreach="arrowValues" t-as="arrowValue" t-key="arrowValue"><t t-esc="arrowValue" /></button>
+        <button class="arrow_value" t-foreach="arrowValues" t-as="arrowValue" t-key="arrowValue" t-on-click="() => setArrow(arrowValue)"><t t-esc="arrowValue" /></button>
       </div>
       <div class="arrow_dialog_footer"><button class="arrow_dialog_delete_btn" t-on-click="deleteArrow">Delete Arrow</button></div>
     </div>

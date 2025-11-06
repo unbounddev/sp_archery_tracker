@@ -21,6 +21,7 @@ export class Ends extends Component {
       this.setDefault();
     }
     this.addArrow = this.addArrow.bind(this);
+    this.setArrow = this.setArrow.bind(this);
     this.openArrowDialog = this.openArrowDialog.bind(this);
   }
   get value(){
@@ -69,6 +70,18 @@ export class Ends extends Component {
         this.closeArrowDialog();
       } catch (e) {
         console.log("ERROR: Could not delete arrow");
+      }
+    }
+  }
+  async setArrow(arrowValue){
+    if (this.state.selectedEnd != null && this.state.selectedArrow != null && arrowValue){
+      try {
+        const ends = JSON.parse(JSON.stringify(this.value.ends));
+        ends[this.state.selectedEnd].arrows[this.state.selectedArrow] = arrowValue;
+        await this.props.record.update({ ends: { ends }}, { save: true });
+        this.closeArrowDialog();
+      } catch (e) {
+        console.log("ERROR: Could not set arrow value")
       }
     }
   }
