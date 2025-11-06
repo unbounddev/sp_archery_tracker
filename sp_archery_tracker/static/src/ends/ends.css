@@ -18,6 +18,7 @@
   list-style: none;
   border: solid 4px hsl(210, 17%, 93%);
   border-radius: 10px;
+  margin-bottom: 16px;
 }
 
 .end_header {
@@ -130,7 +131,7 @@
 }
 
 .arrow_dialog_delete_btn {
-  background-color: red;
+  background-color: #EF4B4B;
   color: white;
   border: none;
   border-radius: 10px;
@@ -161,17 +162,17 @@
 }
 
 .arrow[data-value="5"], .arrow[data-value="6"], .arrow_value[data-value="5"], .arrow_value[data-value="6"] {
-  background-color: blue;
+  background-color: #687FE5;
   color: white;
 }
 
 .arrow[data-value="7"], .arrow[data-value="8"], .arrow_value[data-value="7"], .arrow_value[data-value="8"] {
-  background-color: red;
+  background-color: #CD5656;
   color: white;
 }
 
 .arrow[data-value="9"], .arrow[data-value="10"], .arrow[data-value="X"], .arrow_value[data-value="9"], .arrow_value[data-value="10"], .arrow_value[data-value="X"] {
-  background-color: goldenrod;
+  background-color: #E9B63B;
   color: white;
 }
 
