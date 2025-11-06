@@ -37,14 +37,18 @@
   gap: 8px;
 }
 
-.arrow {
+.end_arrows > li {
   list-style: none;
+}
+
+.arrow {
   width: 48px;
   height: 48px;
   background-color: hsl(210, 17%, 95%);
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
   border-radius: 8px;
   font-weight: 700;
   font-size: 18px;
@@ -116,6 +120,18 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
   place-items: center;
+}
+
+.arrow_dialog_delete_btn {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  padding: 16px 0;
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 8px;
 }
 
 .arrow_value {

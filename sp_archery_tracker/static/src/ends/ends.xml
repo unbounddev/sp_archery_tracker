@@ -8,7 +8,7 @@
           <span class="end_distance"><t t-esc="end.distance" /><t t-esc="end.unit" /></span>
         </div>
         <ul class="end_arrows">
-          <li class="arrow" t-foreach="end.arrows" t-as="arrow" t-key="arrow_index"><t t-esc="arrow" /></li>
+          <li t-foreach="end.arrows" t-as="arrow" t-key="arrow_index"><button class="arrow" t-on-click="() => openArrowDialog(end_index, arrow_index)"><t t-esc="arrow" /></button></li>
           <li><button class="add_arrow_btn" t-on-click="() => addArrow(end_index)"><i class="fa fa-plus"></i></button></li>
         </ul>
       </li>
@@ -17,14 +17,14 @@
     <t t-call="sp_archery_tracker.EditArrowDialog" />
   </t>
   <t t-name="sp_archery_tracker.EditArrowDialog">
-    <div class="edit_arrow_dialog_container" t-if="state.showEditArrowDialog">
+    <div class="edit_arrow_dialog_container" t-if="state.showArrowDialog">
     <div class="edit_arrow_dialog">
-      <div class="edit_arrow_dialog_header"><h1>Edit Arrow</h1><button class="close_btn">X</button></div>
+      <div class="edit_arrow_dialog_header"><h1>Edit Arrow</h1><button class="close_btn" t-on-click="closeArrowDialog">X</button></div>
       <div class="edit_arrow_dialog_content">
         <t t-set="arrowValues" t-value="['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'X']" />
         <button class="arrow_value" t-foreach="arrowValues" t-as="arrowValue" t-key="arrowValue"><t t-esc="arrowValue" /></button>
       </div>
-      <div></div>
+      <div class="arrow_dialog_footer"><button class="arrow_dialog_delete_btn" t-on-click="deleteArrow">Delete Arrow</button></div>
     </div>
   </div>
   </t>
