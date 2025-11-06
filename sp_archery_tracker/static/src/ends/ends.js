@@ -15,7 +15,8 @@ export class Ends extends Component {
     this.state = useState({
       selectedArrow: null,
       selectedEnd: null,
-      showArrowDialog: false
+      showArrowDialog: false,
+      editingArrow: false,
     })
     if (!this.value || !this.value.ends){
       this.setDefault();
@@ -42,22 +43,27 @@ export class Ends extends Component {
       console.log("ERROR: Could not add end")
     }
   } 
-  async addArrow(end) {
-    try {
-      const ends = JSON.parse(JSON.stringify(this.value.ends));
-      ends[end].arrows.push(0);
-      await this.props.record.update({ ends: { ends }}, { save: true });
-    } catch (e) {
-      console.log("ERROR: Could not add arrow")
+  async addArrow(arrowValue) {
+    if (this.state.selectedEnd != null){
+      try {
+        const ends = JSON.parse(JSON.stringify(this.value.ends));
+        ends[this.state.selectedEnd].arrows.push(arrowValue);
+        await this.props.record.update({ ends: { ends }}, { save: true });
+        this.closeArrowDialog();
+      } catch (e) {
+        console.log("ERROR: Could not add arrow")
+      }
     }
   }
   closeArrowDialog() {
     this.state.showArrowDialog = false;
+    this.state.editingArrow = false;
     this.state.selectedArrow = null;
     this.state.selectedEnd = null;
   }
-  openArrowDialog(end, arrow) {
+  openArrowDialog(editingArrow = false, end = null, arrow = null) {
     this.state.showArrowDialog = true;
+    this.state.editingArrow = editingArrow;
     this.state.selectedArrow = arrow;
     this.state.selectedEnd = end;
   }
