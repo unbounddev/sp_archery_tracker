@@ -7,11 +7,22 @@ class SPArcheryTrackerLog(models.Model):
     date = fields.Datetime(default=fields.Datetime.now())
     user_id = fields.Many2one("res.users", string="User")
     ends = fields.Json(default={"ends": []})
-    score = fields.Integer(compute="_compute_score")
+    score = fields.Integer(compute="_compute_score", store=True)
 
     @api.depends("ends")
     def _compute_score(self):
         for record in self:
-            # for end in record.ends:
+            new_score = 0
+            for end in record.ends['ends']:
+                for arrow in end['arrows']:
+                    arrow_value = 0
+                    try:
+                        arrow_value = int(arrow)
+                    except:
+                        if arrow == "X":
+                            arrow_value = 10
+                        else:
+                            arrow_value = 0
+                    new_score = new_score + arrow_value
 
-            record.score = 0
+            record.score = new_score
