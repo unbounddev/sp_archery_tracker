@@ -28,6 +28,22 @@ export class Ends extends Component {
   get value(){
     return this.props.record.data.ends;
   }
+  scoreEnd(arrows) {
+    return arrows.reduce(
+      (sum, currentValue) => {
+        let value = Number(currentValue);
+        if (isNaN(value)){
+          if (currentValue == "X"){
+            value = 10;
+          } else {
+            value = 0;
+          }
+        }
+        return sum + value
+      },
+      0
+    )
+  }
   async setDefault() {
       try {
         await this.props.record.update({ ends: { ends: [] } }, { save: true });
@@ -38,7 +54,7 @@ export class Ends extends Component {
   }
   async addEnd() {
     try {
-      await this.props.record.update({ ends: { ends: [...this.value.ends, { distance: 20, unit: MEASUREMENT_UNITS.YARDS, arrows: [] }] } }, { save: true });
+      await this.props.record.update({ ends: { ends: [...this.value.ends, { distance: 20, unit: MEASUREMENT_UNITS.YARDS, arrows: [], score: 0 }] } }, { save: true });
     } catch (e) {
       console.log("ERROR: Could not add end")
     }
@@ -48,6 +64,7 @@ export class Ends extends Component {
       try {
         const ends = JSON.parse(JSON.stringify(this.value.ends));
         ends[this.state.selectedEnd].arrows.push(arrowValue);
+        ends[this.state.selectedEnd].score = this.scoreEnd(ends[this.state.selectedEnd].arrows);
         await this.props.record.update({ ends: { ends }}, { save: true });
         this.closeArrowDialog();
       } catch (e) {
@@ -72,6 +89,7 @@ export class Ends extends Component {
       try {
         const ends = JSON.parse(JSON.stringify(this.value.ends));
         ends[this.state.selectedEnd].arrows.splice(this.state.selectedArrow, 1);
+        ends[this.state.selectedEnd].score = this.scoreEnd(ends[this.state.selectedEnd].arrows);
         await this.props.record.update({ ends: { ends }}, { save: true });
         this.closeArrowDialog();
       } catch (e) {
@@ -84,6 +102,7 @@ export class Ends extends Component {
       try {
         const ends = JSON.parse(JSON.stringify(this.value.ends));
         ends[this.state.selectedEnd].arrows[this.state.selectedArrow] = arrowValue;
+        ends[this.state.selectedEnd].score = this.scoreEnd(ends[this.state.selectedEnd].arrows);
         await this.props.record.update({ ends: { ends }}, { save: true });
         this.closeArrowDialog();
       } catch (e) {

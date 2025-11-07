@@ -4,8 +4,11 @@
     <ul class="ends" t-if="value.ends">
       <li class="end" t-foreach="value.ends" t-as="end" t-key="end_index">
         <div class="end_header">
-          <span class="end_title">End <t t-esc="end_index+1" /></span>
-          <span class="end_distance"><t t-esc="end.distance" /><t t-esc="end.unit" /></span>
+          <div>
+            <span class="end_title">End <t t-esc="end_index+1" /></span>
+            <span class="end_distance"><t t-esc="end.distance" /><t t-esc="end.unit" /></span>
+          </div>
+          <div class="end_score" t-if="end.score !== undefined &amp;&amp; end.score !== null"><t t-esc="end.score" /></div>
         </div>
         <ul class="end_arrows">
           <li t-foreach="end.arrows" t-as="arrow" t-key="arrow_index"><button class="arrow" t-att-data-value="arrow" t-on-click="() => openArrowDialog(true, end_index, arrow_index)"><t t-esc="arrow" /></button></li>
