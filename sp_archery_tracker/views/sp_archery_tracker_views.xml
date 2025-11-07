@@ -29,6 +29,8 @@
         <field name="user_id" />
         <field name="date" />
         <field name="score" />
+        <field name="num_of_tens" />
+        <field name="num_of_x" />
       </list>
     </field>
   </record>
@@ -39,10 +41,16 @@
       <form>
         <sheet>
           <group>
-            <field name="name" />
-            <field name="user_id" />
-            <field name="date" />
-            <field name="score" />
+            <group>
+              <field name="name" />
+              <field name="user_id" />
+              <field name="date" />
+            </group>
+            <group>
+              <field name="score" />
+              <field name="num_of_tens" />
+              <field name="num_of_x" />
+            </group>
           </group>
         </sheet>
         <sheet>
