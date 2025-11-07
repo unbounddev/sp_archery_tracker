@@ -1,11 +1,14 @@
 from odoo import api, fields, models
 
+def formatTime(time):
+    return time.strftime("%m/%d/%Y %I:%M %p")
+
 class SPArcheryTrackerLog(models.Model):
     _name = "sp.archery.tracker.log"
 
-    name = fields.Char(default=f"Practice {fields.Datetime.to_string(fields.Datetime.now())}")
-    date = fields.Datetime(default=fields.Datetime.now())
-    user_id = fields.Many2one("res.users", string="User")
+    name = fields.Char(default=lambda self: f"Practice {formatTime(fields.Datetime.context_timestamp(self, fields.Datetime.now()))}")
+    date = fields.Datetime(default=fields.Datetime.now)
+    user_id = fields.Many2one("res.users", string="Archer", default=lambda self: self.env.user)
     ends = fields.Json(default={"ends": []})
     score = fields.Integer(compute="_compute_stats", store=True)
     num_of_tens = fields.Integer(compute="_compute_stats", store=True, string="10's")

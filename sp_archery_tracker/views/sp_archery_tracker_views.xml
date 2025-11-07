@@ -26,7 +26,7 @@
     <field name="arch" type="xml">
       <list string="Logs">
         <field name="name" />
-        <field name="user_id" />
+        <field name="user_id" groups="sp_archery_tracker.group_coach" />
         <field name="date" />
         <field name="score" />
         <field name="num_of_tens" />
@@ -43,7 +43,7 @@
           <group>
             <group>
               <field name="name" />
-              <field name="user_id" />
+              <field name="user_id" groups="sp_archery_tracker.group_coach" />
               <field name="date" />
             </group>
             <group>
