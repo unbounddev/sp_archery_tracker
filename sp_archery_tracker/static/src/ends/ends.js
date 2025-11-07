@@ -8,6 +8,8 @@ const MEASUREMENT_UNITS = {
   YARDS: "yd"
 }
 
+const DEFAULT_DISTANCE = 20;
+
 export class Ends extends Component {
   static template = "sp_archery_tracker.Ends";
   static props = {...standardFieldProps};
@@ -24,6 +26,7 @@ export class Ends extends Component {
     this.addArrow = this.addArrow.bind(this);
     this.setArrow = this.setArrow.bind(this);
     this.openArrowDialog = this.openArrowDialog.bind(this);
+    this.handleDistanceChange = this.handleDistanceChange.bind(this);
   }
   get value(){
     return this.props.record.data.ends;
@@ -59,6 +62,20 @@ export class Ends extends Component {
       console.log("ERROR: Could not add end")
     }
   } 
+  async handleDistanceChange(e, end){
+    let newDistance = Number(e.target.value.trim());
+    if (isNaN(newDistance) || newDistance < 1){
+      newDistance = DEFAULT_DISTANCE;
+    }
+    e.target.style.width = (String(newDistance).length + 1) + "ch";
+    try {
+      const ends = JSON.parse(JSON.stringify(this.value.ends));
+      ends[end].distance = newDistance;
+      await this.props.record.update({ ends: { ends }}, { save: true });
+    } catch (e) {
+      console.log("ERROR: Could not update distance");
+    }
+  }
   async addArrow(arrowValue) {
     if (this.state.selectedEnd != null){
       try {

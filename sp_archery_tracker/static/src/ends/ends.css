@@ -33,6 +33,16 @@
   margin-left: 8px;
 }
 
+.end_distance_input {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  display: inline;
+  width: 4ch;
+  text-align: right;
+  font-weight: 700;
+}
+
 .end_arrows {
   list-style: none;
   padding-left: 0;

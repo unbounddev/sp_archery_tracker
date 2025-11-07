@@ -6,7 +6,7 @@
         <div class="end_header">
           <div>
             <span class="end_title">End <t t-esc="end_index+1" /></span>
-            <span class="end_distance"><t t-esc="end.distance" /><t t-esc="end.unit" /></span>
+            <span class="end_distance"><input class="end_distance_input" type="text" list="distanceSuggestions" t-att-value="end.distance" t-on-change="(e) => handleDistanceChange(e, end_index)" /><t t-esc="end.unit" /></span>
           </div>
           <div class="end_score" t-if="end.score !== undefined &amp;&amp; end.score !== null"><t t-esc="end.score" /></div>
         </div>
@@ -18,6 +18,7 @@
     </ul>
     <button id="add_end_btn" t-on-click="addEnd">Add End</button>
     <t t-call="sp_archery_tracker.ArrowDialog" />
+    <t t-call="sp_archery_tracker.DistanceSuggestions" />
   </t>
   <t t-name="sp_archery_tracker.ArrowDialog">
     <div class="arrow_dialog_container" t-if="state.showArrowDialog">
@@ -33,5 +34,11 @@
       <div class="arrow_dialog_footer"><button class="arrow_dialog_delete_btn" t-on-click="deleteArrow" t-if="state.editingArrow">Delete Arrow</button></div>
     </div>
   </div>
+  </t>
+  <t t-name="sp_archery_tracker.DistanceSuggestions">
+    <t t-set="distanceSuggestions" t-value="[10, 11, 14, 15, 17, 19, 20, 23, 25, 28, 30, 32, 35, 36, 40, 41, 44, 45, 48, 50, 52, 53, 55, 58, 59, 60, 61, 64, 65, 70, 80]" />
+    <datalist id="distanceSuggestions">
+      <option t-att-value="suggestion" t-foreach="distanceSuggestions" t-as="suggestion" t-key="suggestion" />
+    </datalist>
   </t>
 </templates>
