@@ -27,6 +27,7 @@ export class Ends extends Component {
     this.setArrow = this.setArrow.bind(this);
     this.openArrowDialog = this.openArrowDialog.bind(this);
     this.handleDistanceChange = this.handleDistanceChange.bind(this);
+    this.handleUnitChange = this.handleUnitChange.bind(this);
   }
   get value(){
     return this.props.record.data.ends;
@@ -74,6 +75,15 @@ export class Ends extends Component {
       await this.props.record.update({ ends: { ends }}, { save: true });
     } catch (e) {
       console.log("ERROR: Could not update distance");
+    }
+  }
+  async handleUnitChange(e, end){
+    try {
+      const ends = JSON.parse(JSON.stringify(this.value.ends));
+      ends[end].unit = e.target.value;
+      await this.props.record.update({ ends: { ends }}, { save: true });
+    } catch (e) {
+      console.log("ERROR: Could not update distance unit");
     }
   }
   async addArrow(arrowValue) {

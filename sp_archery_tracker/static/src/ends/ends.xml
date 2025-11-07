@@ -6,7 +6,12 @@
         <div class="end_header">
           <div>
             <span class="end_title">End <t t-esc="end_index+1" /></span>
-            <span class="end_distance"><input class="end_distance_input" type="text" list="distanceSuggestions" t-att-value="end.distance" t-on-change="(e) => handleDistanceChange(e, end_index)" /><t t-esc="end.unit" /></span>
+            <span class="end_distance"><input class="end_distance_input" type="text" list="distanceSuggestions" t-att-value="end.distance" t-on-change="(e) => handleDistanceChange(e, end_index)" />
+              <t t-set="unitOptions" t-value="['ft', 'yd', 'm']" />
+              <select class="end_distance_unit" t-on-change="(e) => handleUnitChange(e, end_index)">
+                <option t-att-value="unit" t-att-selected="unit == end.unit" t-key="unit" t-foreach="unitOptions" t-as="unit"><t t-esc="unit" /></option>
+              </select>
+            </span>
           </div>
           <div class="end_score" t-if="end.score !== undefined &amp;&amp; end.score !== null"><t t-esc="end.score" /></div>
         </div>
